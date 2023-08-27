@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginService } from '../services/autenticacion/login.service';
+import { LoginRequest } from '../services/autenticacion/loginRequest';
 
 @Component({
   selector: 'app-form-login',
@@ -8,11 +10,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./form-login.component.css']
 })
 export class FormLoginComponent implements OnInit{
+  loginError:string="";
   loginForm = this.formBuilder.group({
     email:['cristal@gmail.com', [Validators.email] ],
     password:['']
   })
-  constructor( private formBuilder:FormBuilder, private router:Router){}
+  constructor( private formBuilder:FormBuilder, private router:Router, private loginService: LoginService){}
   ngOnInit(): void {
     
   }
@@ -27,12 +30,24 @@ export class FormLoginComponent implements OnInit{
 
   login(){
     if(this.loginForm.valid){
-      console.log("Si ingresaste");
-      this.router.navigateByUrl('/inicio');
-      this.loginForm.reset();
+      this.loginService.login(this.loginForm.value as LoginRequest).subscribe({
+        next: (userData) =>{
+          console.log(userData);
+        },
+        error:(errorData) => {
+          console.error(errorData);
+          this.loginError=errorData;
+        },
+        complete:() => {
+          console.info("Login completo");
+          this.router.navigateByUrl('/inicio');
+          this.loginForm.reset();
+        },
+      });
+      
     }
     else{
-      alert("Error al ingresar");
+      this.loginForm.markAllAsTouched();
     }
   }
 }

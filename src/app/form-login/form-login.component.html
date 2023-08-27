@@ -12,7 +12,10 @@
     <div class="card text-bg-light mb-3" style="max-width: 30rem;">
         <div class="card-body mx-4 my-4 mb-3">
             <h4 class="card-title" style="text-align: center;"><strong>Login</strong></h4>
-            
+
+            <!-- Mensaje de error -->
+                <p class="text-danger">{{loginError}}</p>
+
             <!-- Correo y contraseña -->
             <form [formGroup]="loginForm">
                 <div class="mb-3">

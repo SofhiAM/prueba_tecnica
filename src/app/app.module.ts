@@ -7,7 +7,7 @@ import { FormLoginComponent } from './form-login/form-login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormRegistrarComponent } from './form-registrar/form-registrar.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
