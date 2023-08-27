@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { FormLoginComponent } from './form-login/form-login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormRegistrarComponent } from './form-registrar/form-registrar.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { FormRegistrarComponent } from './form-registrar/form-registrar.componen
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

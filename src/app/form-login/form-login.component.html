@@ -1,23 +1,55 @@
-<div class="card text-bg-light mb-3" style="max-width: 30rem;">
-    <div class="card-body mx-4 my-4 mb-3">
-        <h4 class="card-title" style="text-align: center;"><strong>Login</strong></h4>
-        
-        <!-- Correo y contraseña -->
-        <form action="" method="post">
-            <div class="mb-3">
-                <label for="email_user" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email_user" placeholder="name@example.com"><br>
-                
-                <label for="pass_usuario" class="form-label">Contraseña</label>
-                <input type="password" id="pass_usuario" class="form-control" aria-describedby="passwordHelpBlock">
+<style>
+    .center{
+      height: 100%;
+      margin-top: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+</style>
+
+<div class="center">
+    <div class="card text-bg-light mb-3" style="max-width: 30rem;">
+        <div class="card-body mx-4 my-4 mb-3">
+            <h4 class="card-title" style="text-align: center;"><strong>Login</strong></h4>
+            
+            <!-- Correo y contraseña -->
+            <form [formGroup]="loginForm">
+                <div class="mb-3">
+
+                    <!-- Correo -->
+                    <label for="email_user" class="form-label">Email</label>
+                    <input  type="email" formControlName="email" class="form-control" id="email_user" placeholder="name@example.com" required>
+                    
+                    <!-- Gestion de errores -->
+                    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
+                        <div *ngIf="email.errors?.['required']">
+                            Es necesario que ingrese un email
+                        </div>
+                        <div *ngIf="email.errors?.['email']">
+                            Debe ingresar un email con formato válido
+                        </div>
+                    </div>
+                    <!-- Contraseña -->
+                    <label for="pass_usuario" class="form-label">Contraseña</label>
+                    <input formControlName="password" type="password" id="pass_usuario" class="form-control" aria-describedby="passwordHelpBlock" required>
+
+                    <!-- Errores -->
+                    <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
+                        <div *ngIf="password.errors?.['required']">
+                            Es necesario que ingrese su contraseña
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center"> 
+                    <input type="submit" class="btn btn-primary" (click)="login()" value="Iniciar Sesion">
+                </div>
+            </form>
+            <div class="text-center my-3"> 
+                <span>¿Necesitas una cuenta?  </span>
+                <a routerLink="/registrar">Crear cuenta</a>
             </div>
-            <div class="text-center"> 
-                <input type="submit" class="btn btn-primary" value="Iniciar Sesion">
-            </div>
-        </form>
-        <div class="text-center my-3"> 
-            <span>¿Necesitas una cuenta?  </span>
-            <a href="#">Crear cuenta</a>
         </div>
     </div>
+    
 </div>
