@@ -3,17 +3,18 @@
         <h4 class="card-title" style="text-align: center;"><strong>Login</strong></h4>
         
         <!-- Correo y contraseña -->
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email_user" placeholder="name@example.com"><br>
-            
-            <label for="inputPassword5" class="form-label">Contraseña</label>
-            <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
-        </div>
-        <div class="text-center"> 
-            <a href="#" class="btn btn-primary">Iniciar sesion</a>
-        </div>
-
+        <form action="" method="post">
+            <div class="mb-3">
+                <label for="email_user" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email_user" placeholder="name@example.com"><br>
+                
+                <label for="pass_usuario" class="form-label">Contraseña</label>
+                <input type="password" id="pass_usuario" class="form-control" aria-describedby="passwordHelpBlock">
+            </div>
+            <div class="text-center"> 
+                <input type="submit" class="btn btn-primary" value="Iniciar Sesion">
+            </div>
+        </form>
         <div class="text-center my-3"> 
             <span>¿Necesitas una cuenta?  </span>
             <a href="#">Crear cuenta</a>
