@@ -8,13 +8,17 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormRegistrarComponent } from './form-registrar/form-registrar.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { DashadminComponent } from './dashadmin/dashadmin.component';
+import { DashinvitadoComponent } from './dashinvitado/dashinvitado.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormLoginComponent,
     DashboardComponent,
-    FormRegistrarComponent
+    FormRegistrarComponent,
+    DashadminComponent,
+    DashinvitadoComponent
 
   ],
   imports: [

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../services/autenticacion/login.service';
 import { User } from '../services/autenticacion/users';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -9,8 +11,9 @@ import { User } from '../services/autenticacion/users';
 })
 export class DashboardComponent implements OnInit {
   userLoginOn:boolean = false;
+  userAdministrador:boolean = false;
   userData?:User;
-  constructor(private loginService: LoginService){}
+  constructor(private loginService: LoginService, private router: Router){}
   
   ngOnInit(): void {
     this.loginService.currentUserLoginOn.subscribe({
@@ -23,7 +26,17 @@ export class DashboardComponent implements OnInit {
       next:(userData) => {
         this.userData=userData;
       }
+    });
+
+    this.loginService.currentUserAdministrador.subscribe({
+      next:(userAdministrador) => {
+        this.userAdministrador=userAdministrador;
+      }
     })
+
+    if (!this.userLoginOn) {
+      this.router.navigate(['/iniciar-sesion']); 
+    }
   }
  
 }

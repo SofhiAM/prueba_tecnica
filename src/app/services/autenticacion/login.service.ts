@@ -10,6 +10,8 @@ import { User } from './users';
 export class LoginService {
 
   currentUserLoginOn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  currentUserAdministrador: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  currentUserInvitado: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   currentUserData: BehaviorSubject<User> = new BehaviorSubject<User>({id:'0', email:''});
 
   constructor(private http: HttpClient) { }
@@ -18,7 +20,8 @@ export class LoginService {
     return this.http.get<User>('././assets/data.json').pipe(
       tap ((userData: User) => {
         this.currentUserData.next(userData);
-        this.currentUserLoginOn.next(true)
+        this.currentUserLoginOn.next(true);
+        this.currentUserAdministrador.next(false);
       }),
       catchError(this.handleError)
     );

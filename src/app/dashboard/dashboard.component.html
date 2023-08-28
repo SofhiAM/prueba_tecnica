@@ -1,11 +1,16 @@
 <div class="container">
-    <p *ngIf="!userLoginOn">Usuario NO autenticado</p>
-    <p *ngIf="userLoginOn">Usuario autenticado</p>
+    <!-- <div *ngIf="!userLoginOn">
+        <app-form-login></app-form-login>
+    </div> -->
 
-<div *ngIf="userLoginOn">
-    <p>Nombre: {{userData?.name}}</p>
-    <p>Apellido: {{userData?.lastname}}</p>
-    <p>Email: {{userData?.email}}</p>
-</div>
+    <div *ngIf="userLoginOn">
+        <div *ngIf="userAdministrador">
+            <app-dashadmin></app-dashadmin>
+        </div>
+
+        <div *ngIf="!userAdministrador">
+            <app-dashinvitado></app-dashinvitado>
+        </div>
+    </div>
 </div>
 

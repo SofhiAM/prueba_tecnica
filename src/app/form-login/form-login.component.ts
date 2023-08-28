@@ -17,7 +17,6 @@ export class FormLoginComponent implements OnInit{
   })
   constructor( private formBuilder:FormBuilder, private router:Router, private loginService: LoginService){}
   ngOnInit(): void {
-    
   }
 
   get email(){

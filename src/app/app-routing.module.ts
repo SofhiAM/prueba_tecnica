@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormLoginComponent } from './form-login/form-login.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/iniciar-sesion', pathMatch: 'full' },
   {path:'registrar', component:FormRegistrarComponent},
   {path:'inicio', component:DashboardComponent},
   {path:'iniciar-sesion', component:FormLoginComponent}
